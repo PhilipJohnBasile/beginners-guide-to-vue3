@@ -24,8 +24,8 @@ app.component('ticket-details', {
     methods: {
         addTickets(num) {
             this.ticketsLeft = this.ticketsLeft - num
-            this.ticketsToBuy = 0
             this.$emit('buyTickets', this.ticketsToBuy, this.name)
+            this.ticketsToBuy = 0
         }
     }
 })
