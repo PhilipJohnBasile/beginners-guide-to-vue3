@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Events</title>
+    <link rel='stylesheet' href='assets/styles.css'>
+    <script src='https://unpkg.com/vue@3.2.37/dist/vue.global.js'></script>
+    <script src='https://unpkg.com/axios@0.27.2/dist/axios.js'></script>
+</head>
+<body>
+<div class="top-bar">
+    <h1 class="site-title">Online Events</h1>
+</div>
+<div id='app'>
+    <div class="container">
+        <div class="left">
+            <h1>{{title.toUpperCase()}}</h1>
+            <p v-if="tickets > 15">On Sale Now!</p>
+            <p v-else-if="tickets <= 15 && tickets > 0">Tickets are low!</p>
+            <p v-else>Sorry. We're sold out.</p>
+            <ul>
+                <li v-for="detail of details" :key="detail">{{detail}}</li>
+            </ul>
+            <ul class="ticketTypes">
+                <li class="ticketSelector"
+                    @mouseover="updateImage(type.id)"
+                    v-for="type in ticketTypes">
+                    {{type.name}}
+                </li>
+            </ul>
+            <div>
+                <h2>Ticket Types</h2>
+                <h3 v-if='error'>Sorry, we're having trouble getting the ticket types. Try again later. Sorry</h3>
+                <div v-for='type in ticketTypes' :key='type.id'>
+                    <ticket-details
+                            :name='type.name'
+                            :description='type.description'
+                            :tickets='type.tickets'
+                            @buy-tickets='buyTickets'
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <img class="base-class" :class="[{'sold-out': soldOut},{hidden: hidden}]" :src="image"/>
+        </div>
+    </div>
+    <div class="cart">Tickets ({{cart}})</div>
+</div>
+<script src='./main.js'></script>
+<script src='./components/TicketDetails.js'></script>
+<script>
+    const mountedApp = app.mount("#app");
+</script>
+</body>
+
+</html>

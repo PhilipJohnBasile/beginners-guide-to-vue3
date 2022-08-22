@@ -1,0 +1,23 @@
+[
+  {
+    "id": "bronzeTicket",
+    "name": "Bronze",
+    "image": "https://www.fillmurray.com/200/200",
+    "tickets": 3,
+    "description": "This is a bronze level fun."
+  },
+  {
+    "id": "silverTicket",
+    "name": "Silver",
+    "image": "https://www.fillmurray.com/200/202",
+    "tickets": 10,
+    "description": "This is a silver level fun."
+  },
+  {
+    "id": "goldTicket",
+    "name": "Gold",
+    "image": "https://www.fillmurray.com/200/199",
+    "tickets": 40,
+    "description": "Go all in - this is the gold level!"
+  }
+]
